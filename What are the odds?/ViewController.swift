@@ -30,13 +30,16 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     //Connection buttons/functions (Display data in text view below buttons)
     
     @IBAction func goButton(_ sender: UIButton) {
-        textView.text = "Your number is \(firstNumberField.text!) \nTheir number is \(secondNumberField.text!) \n The odds are \(chosenOdds)"
+        textView.text = "Your number is \(firstNumberField.text!) \nTheir number is \(secondNumberField.text!) \nThe odds are \(chosenOdds)"
         //Need to figure out how to get pickerView Selection
         }
     @IBAction func resetButton(_ sender: UIButton) {
+        self.firstNumberField.text = nil
+        self.secondNumberField.text = nil
+        self.textView.text = nil
     }
     
-    var chosenOdds = "test"
+    var chosenOdds = ""
     
     //Array for pickerView (Need to optimise)
     
