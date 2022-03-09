@@ -17,7 +17,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return availableOdds[row]
     }
-    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        chosenOdds = availableOdds[row]
+    }
     //Connection Variables from Storyboard to ViewController
     
     @IBOutlet var firstNumberField: UITextField!
@@ -28,10 +30,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     //Connection buttons/functions (Display data in text view below buttons)
     
     @IBAction func goButton(_ sender: UIButton) {
-        textView.text = "Your number is \(firstNumberField.text!) \nTheir number is \(secondNumberField.text!) \n The odds are " //Need to figure out how to get pickerView Selection
+        textView.text = "Your number is \(firstNumberField.text!) \nTheir number is \(secondNumberField.text!) \n The odds are \(chosenOdds)"
+        //Need to figure out how to get pickerView Selection
         }
     @IBAction func resetButton(_ sender: UIButton) {
     }
+    
+    var chosenOdds = "test"
     
     //Array for pickerView (Need to optimise)
     
