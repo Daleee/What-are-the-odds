@@ -34,9 +34,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         //Need to figure out how to get pickerView Selection
         }
     @IBAction func resetButton(_ sender: UIButton) {
+        self.firstNumberField.text = nil
+        self.secondNumberField.text = nil
+        self.textView.text = nil
     }
     
-    var chosenOdds = "test"
+    var chosenOdds = ""
     
     //Array for pickerView (Need to optimise)
     
