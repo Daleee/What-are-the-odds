@@ -27,10 +27,18 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet var oddsPickerView: UIPickerView!
     @IBOutlet var textView: UITextView!
     
+    //Button styling
+    
+    
+    
     //Connection buttons/functions (Display data in text view below buttons)
     
     @IBAction func goButton(_ sender: UIButton) {
-        textView.text = "Your number is \(firstNumberField.text!) \nTheir number is \(secondNumberField.text!) \nThe odds are \(chosenOdds)"
+        if firstNumberField.text == secondNumberField.text {
+            textView.text = "Your number is \(firstNumberField.text!) \nTheir number is \(secondNumberField.text!) \nGOTTEEEEM!!!"
+        } else {
+            textView.text = "Your number is \(firstNumberField.text!) \nTheir number is \(secondNumberField.text!) \nNot this time..."
+        }
         //Need to figure out how to get pickerView Selection
         }
     @IBAction func resetButton(_ sender: UIButton) {
@@ -49,7 +57,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         oddsPickerView.delegate = self
         firstNumberField.delegate = self
         secondNumberField.delegate = self
+        firstNumberField.keyboardType = .numberPad
+        secondNumberField.keyboardType = .numberPad
         // Do any additional setup after loading the view.
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 2
+        let currentString: NSString = (textField.text ?? "") as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
     }
     
     //Safeguards for exiting device keyboard
