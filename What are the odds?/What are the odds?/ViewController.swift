@@ -12,13 +12,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return availableOdds.count
+        return 50
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return availableOdds[row]
+        return String(row + 1)
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        chosenOdds = availableOdds[row]
+        chosenOdds = String(row + 1)
     }
     //Connection Variables from Storyboard to ViewController
     
@@ -27,20 +27,27 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet var oddsPickerView: UIPickerView!
     @IBOutlet var textView: UITextView!
     
+    //Button styling
+    
+    
+    
     //Connection buttons/functions (Display data in text view below buttons)
     
     @IBAction func goButton(_ sender: UIButton) {
-        textView.text = "Your number is \(firstNumberField.text!) \nTheir number is \(secondNumberField.text!) \n The odds are \(chosenOdds)"
+        if firstNumberField.text == secondNumberField.text {
+            textView.text = "Your number is \(firstNumberField.text!) \nTheir number is \(secondNumberField.text!) \nGOTTEEEEM!!!"
+        } else {
+            textView.text = "Your number is \(firstNumberField.text!) \nTheir number is \(secondNumberField.text!) \nNot this time..."
+        }
         //Need to figure out how to get pickerView Selection
         }
     @IBAction func resetButton(_ sender: UIButton) {
+        self.firstNumberField.text = nil
+        self.secondNumberField.text = nil
+        self.textView.text = nil
     }
     
-    var chosenOdds = "test"
-    
-    //Array for pickerView (Need to optimise)
-    
-    let availableOdds = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50"]
+    var chosenOdds = ""
     
     //Loading the view
     
